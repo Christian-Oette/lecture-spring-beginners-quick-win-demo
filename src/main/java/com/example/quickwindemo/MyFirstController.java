@@ -8,12 +8,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MyFirstController {
 
-    @Autowired
-    private MyFirstService myFirstService;
-
     @GetMapping
-    public HelloDto hello(@RequestParam(required = false) String user) {
-        return myFirstService.hello(user);
+    public HelloDto hello() {
+        return new HelloDto("This application is up and running");
+    }
+
+    public static class HelloDto{
+        private String text;
+
+        public HelloDto(String text) {
+            this.text = text;
+        }
+
+        public String getText() {
+            return text;
+        }
     }
 
 }
